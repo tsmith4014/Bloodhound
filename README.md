@@ -1,3 +1,7 @@
+Let's refine the README to include the correct steps for creating the deployment package and using the AWS CLI to create and deploy the Lambda function.
+
+---
+
 # Bloodhound Lambda Function
 
 ## Table of Contents
@@ -62,7 +66,13 @@ The Bloodhound Lambda function is designed to scan AWS regions for EC2 and RDS i
 
 ### 5. Prepare the Lambda Function Code
 
-1. Create a directory for your Lambda function code.
+1. Create a directory for your Lambda function code:
+
+```sh
+mkdir bloodhound_lambda
+cd bloodhound_lambda
+```
+
 2. Create a file named `lambda_function.py` and add the following code:
 
 ```python
@@ -160,7 +170,7 @@ boto3
 
 ```sh
 pip install -r requirements.txt -t .
-zip -r9 bloodhound_lambda.zip .
+zip -r9 ../bloodhound_lambda.zip .
 ```
 
 2. Create the Lambda function using the AWS CLI:
@@ -226,17 +236,16 @@ name: Invoke Bloodhound Lambda
 on:
   schedule:
     # Run at 11 AM and 11 PM EST (4 PM and 4 AM UTC)
-    - cron: '0 16,4 * * *'
+    - cron: "0 16,4 * * *"
   workflow_dispatch:
 
-jobs:
-  invoke-lambda:
-    runs-on: ubuntu-latest
+jobs: invoke
 
-    steps:
-    - name
+-lambda:
+  runs-on: ubuntu-latest
 
-: Checkout repository
+  steps:
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up AWS CLI
