@@ -1,0 +1,28 @@
+name: Invoke Bloodhound Lambda
+
+on:
+  schedule:
+    # Run at 11 AM and 11 PM EST (4 PM and 4 AM UTC)
+    - cron: '0 16,4 * * *'
+  workflow_dispatch:
+
+jobs:
+  invoke-lambda:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+    - name: Invoke Bloodhound Lambda function
+      run: |
+        echo '{}' > test_event.json
+        aws lambda invoke --function-name BloodhoundLambda --payload file://test_event.json output.txt --region us-west-2
+        cat output.txt
