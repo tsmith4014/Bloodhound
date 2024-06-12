@@ -1,7 +1,3 @@
-Let's refine the README to include the correct steps for creating the deployment package and using the AWS CLI to create and deploy the Lambda function.
-
----
-
 # Bloodhound Lambda Function
 
 ## Table of Contents
@@ -24,6 +20,8 @@ Let's refine the README to include the correct steps for creating the deployment
 ## Overview
 
 The Bloodhound Lambda function is designed to scan AWS regions for EC2 and RDS instances and post a summary to a Slack channel. This README provides detailed steps to set up, deploy, and test the Lambda function, including Slack integration.
+
+![AWS Architecture Diagram](assets/bloodhound_lambda_architecture.png)
 
 ## Prerequisites
 
