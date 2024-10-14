@@ -1,9 +1,9 @@
 name: Invoke Bloodhound Lambda
 
 on:
-  schedule:
-    # Run at 11 AM and 11 PM EST (4 PM and 4 AM UTC)
-    - cron: '0 16,4 * * *'
+  # schedule:
+  #   # Run at 11 AM and 11 PM EST (4 PM and 4 AM UTC)
+  #   - cron: '0 16,4 * * *'
   workflow_dispatch:
 
 jobs:
